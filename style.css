@@ -23,10 +23,18 @@ button {
     cursor: pointer;
 }
 
-#player-selection-screen, #chip-management-screen {
+#player-selection-screen {
     margin-top: 20px;
     width: 100%;
     max-width: 800px;
+}
+#chip-management-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    max-height: 100vh; /* 画面全体の高さに収める */
+    overflow-y: auto; /* 縦スクロール可能に */
 }
 
 #pot-area {
@@ -40,12 +48,13 @@ button {
 
 #players-container {
     display: flex;
-    justify-content: flex-start; /* 横一列に並べる */
-    align-items: flex-start; /* 全て同じy座標に揃える */
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 20px;
     padding: 10px;
-    flex-wrap: nowrap; /* 折り返さない */
-    min-width: 100%; /* プレイヤーが画面の幅を越えても横スクロールできるように */
+    flex-wrap: nowrap;
+    min-width: 100%;
+    
 }
 
 .player {
@@ -70,6 +79,9 @@ button {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px; /* 最大幅を指定 */
+    overflow-x: auto; /* 横スクロール可能に */
 }
 
 button {

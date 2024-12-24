@@ -41,7 +41,7 @@ function renderDistributeButtons(numPlayers) {
   // プレイヤー人数分だけボタンを生成
   for (let i = 0; i < numPlayers; i++) {
     const button = document.createElement('button');
-    button.textContent = `プレイヤー${i + 1}に分配`;
+    button.textContent = `分配${i + 1}`;
     button.onclick = () => distributePot(i);
     buttonContainer.appendChild(button);
   }
