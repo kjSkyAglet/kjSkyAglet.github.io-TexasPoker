@@ -18,7 +18,7 @@ h1, h3 {
 button {
     margin: 5px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     background-color: #4CAF50;
     border: none;
@@ -86,8 +86,7 @@ button:disabled {
     height: 250px; /* 高さを少し増やして要素を収める */
     text-align: center;
     margin: 2px;  /* プレイヤー間に隙間を追加 */
-    overflow: hidden; /* 要素が枠を超えないようにする */
-}
+    overflow-y: auto;
 
 .chip-stack {
     position: relative;
