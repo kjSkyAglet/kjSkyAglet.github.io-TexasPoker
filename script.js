@@ -4,6 +4,7 @@ let pot = 0;
 // 初期画面の人数ボタン生成
 const playerSelectScreen = document.getElementById('player-select-screen');
 const chipManagementScreen = document.getElementById('chip-management-screen');
+const mainTitle = document.getElementById('main-title');
 const playerButtons = document.getElementById('player-buttons');
 
 for (let i = 1; i <= 8; i++) {
@@ -20,6 +21,7 @@ function startGame(playerCount) {
   renderPlayers();
   playerSelectScreen.classList.add('hidden');
   chipManagementScreen.classList.remove('hidden');
+  mainTitle.classList.add('hidden'); // タイトルを非表示
 }
 
 // プレイヤー情報をレンダリング
@@ -33,8 +35,10 @@ function renderPlayers() {
       <h4>プレイヤー ${index + 1}</h4>
       <div>所持チップ: <span id="chips-${index}">${chips}</span></div>
       <div>ベット額: <span id="bet-${index}">0</span></div>
+      <div class="chip-stack" id="chip-stack-${index}"></div>
       <button onclick="bet(${index}, 100)">+100</button>
       <button onclick="bet(${index}, -100)">-100</button>
+      <button onclick="distributePotToPlayer(${index})">ポットから分配</button>
     `;
     container.appendChild(playerDiv);
   });
@@ -45,21 +49,34 @@ function bet(playerIndex, amount) {
   const currentChips = players[playerIndex];
   const betSpan = document.getElementById(`bet-${playerIndex}`);
   const chipsSpan = document.getElementById(`chips-${playerIndex}`);
+  const chipStackDiv = document.getElementById(`chip-stack-${playerIndex}`);
   let betAmount = parseInt(betSpan.textContent, 10);
 
   if (amount > 0 && currentChips >= amount) {
-    // ベットを増加
     players[playerIndex] -= amount;
     betAmount += amount;
+    addChipsToStack(chipStackDiv, betAmount / 100);
   } else if (amount < 0 && betAmount >= Math.abs(amount)) {
-    // ベットを減少
     players[playerIndex] += Math.abs(amount);
     betAmount += amount;
+    addChipsToStack(chipStackDiv, betAmount / 100);
   }
 
   chipsSpan.textContent = players[playerIndex];
   betSpan.textContent = betAmount;
   updatePot();
+}
+
+// ベット額に応じてチップ画像を表示
+function addChipsToStack(stackDiv, chipCount) {
+  stackDiv.innerHTML = '';
+  for (let i = 0; i < chipCount; i++) {
+    const chip = document.createElement('img');
+    chip.src = '/img/chip100.png';
+    chip.className = 'chip';
+    chip.style.bottom = `${i * 5}px`; // チップの重なり位置
+    stackDiv.appendChild(chip);
+  }
 }
 
 // ポットの更新
@@ -70,10 +87,10 @@ function updatePot() {
   document.getElementById('pot-value').textContent = pot;
 }
 
-// ポットの分配
-function distributePot() {
+// ポットからプレイヤーごとに分配
+function distributePotToPlayer(playerIndex) {
   const share = Math.floor(pot / players.length);
-  players = players.map(chips => chips + share);
+  players[playerIndex] += share;
   renderPlayers();
   resetPot();
 }
