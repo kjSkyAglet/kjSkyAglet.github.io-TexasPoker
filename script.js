@@ -50,15 +50,20 @@ function updatePotDisplay() {
   document.getElementById('pot-value').textContent = pot;
 }
 
-// ベットチップをポットに回収
 function collectBets() {
-  betChip.forEach((amount, index) => {
-    pot += amount;
-    betChip[index] = 0; // 各プレイヤーのベット額をリセット
-  });
-  renderPlayers();
-  updatePotDisplay();
-}
+    // すべてのプレイヤーのベット額が同じかどうかを確認
+    const allBetsEqual = betChip.every(bet => bet === betChip[0]);
+  
+    if (allBetsEqual) {
+      // ベット額がすべて同じ場合、ポットに回収
+      betChip.forEach((amount, index) => {
+        pot += amount;
+        betChip[index] = 0; // 各プレイヤーのベット額をリセット
+      });
+      renderPlayers();
+      updatePotDisplay();
+    } 
+  }
 
 // ポットから指定プレイヤーに全て分配
 function distributePot(playerIndex) {
