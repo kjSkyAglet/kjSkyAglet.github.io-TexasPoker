@@ -38,11 +38,12 @@ button {
 }
 
 #players-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
+    justify-content: center; /* 横並びにする */
     gap: 20px;
-    justify-content: center;
     padding: 10px;
+    flex-wrap: nowrap; /* 折り返さない */
+    overflow-x: auto; /* 横スクロールを追加 */
 }
 
 .player {
@@ -54,6 +55,7 @@ button {
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    width: 150px; /* プレイヤーエリアの幅を指定 */
 }
 
 .chip-stack img {
