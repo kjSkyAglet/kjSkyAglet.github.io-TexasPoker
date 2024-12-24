@@ -1,54 +1,35 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poker Chip Manager</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
-  <!-- 画面1: プレイヤー人数選択 -->
-  <div id="player-selection-screen">
-    <h1 id="app-title">Poker Chip Count v1.1</h1>
-    <h3>プレイヤー人数</h3>
-    <div id="player-buttons">
-      <!-- プレイヤー人数選択ボタン -->
-      
-      <button onclick="selectPlayers(2)">2</button>
-      <button onclick="selectPlayers(3)">3</button>
-      <button onclick="selectPlayers(4)">4</button>
-      <button onclick="selectPlayers(5)">5</button>
-      <button onclick="selectPlayers(6)">6</button>
-      <button onclick="selectPlayers(7)">7</button>
-      <button onclick="selectPlayers(8)">8</button>
+    <!-- 画面1: プレイヤー人数選択 -->
+    <div id="player-selection-screen">
+      <h1 id="app-title">Poker Chip Count v1.2</h1>
+      <h3>プレイヤー人数</h3>
+      <div id="player-buttons">
+        <!-- プレイヤー人数選択ボタン -->
+        <button onclick="selectPlayers(1)">1</button>
+        <button onclick="selectPlayers(2)">2</button>
+        <button onclick="selectPlayers(3)">3</button>
+        <button onclick="selectPlayers(4)">4</button>
+        <button onclick="selectPlayers(5)">5</button>
+        <button onclick="selectPlayers(6)">6</button>
+        <button onclick="selectPlayers(7)">7</button>
+        <button onclick="selectPlayers(8)">8</button>
+      </div>
     </div>
-  </div>
-
-   <!-- 画面2: チップ管理画面 -->
-   <div id="chip-management-screen" style="display: none;">
-    <!-- ポットエリア -->
-    <div id="pot-area">
-      <h2>ポットエリア</h2>
-      <div>ポット: <span id="pot-value">0</span></div>
-      <button onclick="collectBets()">ベットチップ回収</button>
+  
+    <!-- 画面2: チップ管理画面 -->
+    <div id="chip-management-screen" style="display: none;">
+      <!-- ポットエリア -->
+      <div id="pot-area">
+        <h2>ポットエリア</h2>
+        <div>ポット: <span id="pot-value">0</span></div>
+        <button onclick="collectBets()">ベットチップ回収</button>
+      </div>
+  
+      <!-- ポットから分配ボタン -->
+      <div id="distribute-pot-buttons"></div>
+  
+      <!-- プレイヤーエリア -->
+      <div id="players-container"></div>
     </div>
-
-    <!-- ポットから分配ボタンを画面上部に移動 -->
-    <div id="distribute-pot-buttons">
-      <button onclick="distributePot(0)">プレイヤー1に分配</button>
-      <button onclick="distributePot(1)">プレイヤー2に分配</button>
-      <button onclick="distributePot(2)">プレイヤー3に分配</button>
-      <button onclick="distributePot(3)">プレイヤー4に分配</button>
-      <button onclick="distributePot(4)">プレイヤー5に分配</button>
-      <button onclick="distributePot(5)">プレイヤー6に分配</button>
-      <button onclick="distributePot(6)">プレイヤー7に分配</button>
-      <button onclick="distributePot(7)">プレイヤー8に分配</button>
-    </div>
-
-    <!-- プレイヤーエリア -->
-    <div id="players-container"></div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  </body>
+  

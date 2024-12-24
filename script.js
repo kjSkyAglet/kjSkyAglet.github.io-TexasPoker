@@ -10,6 +10,7 @@ function selectPlayers(numPlayers) {
   document.getElementById('chip-management-screen').style.display = 'block';
   renderPlayers();
   updatePotDisplay();
+  renderDistributeButtons(numPlayers); // 分配ボタンの動的生成
 }
 
 // プレイヤーエリアを描画
@@ -26,10 +27,23 @@ function renderPlayers() {
       <button onclick="bet(${index}, 100)">+100</button>
       <button onclick="bet(${index}, -100)">-100</button>
       <div>所持チップ: <span id="chips-${index}">${chips}</span></div>
-      <button onclick="distributePot(${index})">ポットから分配</button>
     `;
     container.appendChild(playerDiv);
   });
+}
+
+// ポットから分配ボタンを動的に生成
+function renderDistributeButtons(numPlayers) {
+  const buttonContainer = document.getElementById('distribute-pot-buttons');
+  buttonContainer.innerHTML = ''; // 既存のボタンをクリア
+
+  // プレイヤー人数分だけボタンを生成
+  for (let i = 0; i < numPlayers; i++) {
+    const button = document.createElement('button');
+    button.textContent = `プレイヤー${i + 1}に分配`;
+    button.onclick = () => distributePot(i);
+    buttonContainer.appendChild(button);
+  }
 }
 
 // ベットの更新
@@ -50,20 +64,15 @@ function updatePotDisplay() {
   document.getElementById('pot-value').textContent = pot;
 }
 
+// ベットチップをポットに回収
 function collectBets() {
-    // すべてのプレイヤーのベット額が同じかどうかを確認
-    const allBetsEqual = betChip.every(bet => bet === betChip[0]);
-  
-    if (allBetsEqual) {
-      // ベット額がすべて同じ場合、ポットに回収
-      betChip.forEach((amount, index) => {
-        pot += amount;
-        betChip[index] = 0; // 各プレイヤーのベット額をリセット
-      });
-      renderPlayers();
-      updatePotDisplay();
-    } 
-  }
+  betChip.forEach((amount, index) => {
+    pot += amount;
+    betChip[index] = 0; // 各プレイヤーのベット額をリセット
+  });
+  renderPlayers();
+  updatePotDisplay();
+}
 
 // ポットから指定プレイヤーに全て分配
 function distributePot(playerIndex) {
