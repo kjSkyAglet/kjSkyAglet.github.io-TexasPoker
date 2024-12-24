@@ -1,11 +1,14 @@
-let players = [2200, 2900, 3000]; // プレイヤーの初期チップ
+let players = [];
 let pot = 0;
 
-// ページロード時にプレイヤーをレンダリング
-document.addEventListener('DOMContentLoaded', () => {
+// プレイヤー人数選択
+function selectPlayers(numPlayers) {
+  players = Array(numPlayers).fill(3000); // 初期チップを設定
+  document.getElementById('player-selection-screen').style.display = 'none';
+  document.getElementById('chip-management-screen').style.display = 'block';
   renderPlayers();
   updatePot();
-});
+}
 
 // プレイヤーエリアを描画
 function renderPlayers() {
