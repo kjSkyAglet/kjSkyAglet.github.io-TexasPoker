@@ -1,13 +1,15 @@
 let players = [];
 let pot = 0;
+let betChip = []; // 各プレイヤーのベット額
 
 // プレイヤー人数選択
 function selectPlayers(numPlayers) {
-  players = Array(numPlayers).fill(3000); // 初期チップを設定
+  players = Array(numPlayers).fill(3000); // 初期チップ
+  betChip = Array(numPlayers).fill(0); // ベットチップを初期化
   document.getElementById('player-selection-screen').style.display = 'none';
   document.getElementById('chip-management-screen').style.display = 'block';
   renderPlayers();
-  updatePot();
+  updatePotDisplay();
 }
 
 // プレイヤーエリアを描画
@@ -19,7 +21,7 @@ function renderPlayers() {
     playerDiv.className = 'player';
     playerDiv.innerHTML = `
       <h4>プレイヤー ${index + 1}</h4>
-      <div>ベット額: <span id="bet-${index}">0</span></div>
+      <div>ベット額: <span id="bet-${index}">${betChip[index]}</span></div>
       <div class="chip-stack" id="chip-stack-${index}"></div>
       <button onclick="bet(${index}, 100)">+100</button>
       <button onclick="bet(${index}, -100)">-100</button>
@@ -33,44 +35,35 @@ function renderPlayers() {
 // ベットの更新
 function bet(playerIndex, amount) {
   const currentChips = players[playerIndex];
-  const betSpan = document.getElementById(`bet-${playerIndex}`);
-  const chipsSpan = document.getElementById(`chips-${playerIndex}`);
-  let betAmount = parseInt(betSpan.textContent, 10);
-
   if (amount > 0 && currentChips >= amount) {
     players[playerIndex] -= amount;
-    betAmount += amount;
-  } else if (amount < 0 && betAmount >= Math.abs(amount)) {
+    betChip[playerIndex] += amount;
+  } else if (amount < 0 && betChip[playerIndex] >= Math.abs(amount)) {
     players[playerIndex] += Math.abs(amount);
-    betAmount += amount;
+    betChip[playerIndex] += amount; // amountは負数
   }
-
-  chipsSpan.textContent = players[playerIndex];
-  betSpan.textContent = betAmount;
-  updatePot();
+  renderPlayers();
 }
 
-// ポットの更新
-function updatePot() {
-  pot = players.reduce((acc, _, index) => {
-    return acc + parseInt(document.getElementById(`bet-${index}`).textContent, 10);
-  }, 0);
+// ポットの表示を更新
+function updatePotDisplay() {
   document.getElementById('pot-value').textContent = pot;
 }
 
-// ポットのチップを回収
+// ベットチップをポットに回収
 function collectBets() {
-  players.forEach((_, index) => {
-    const betSpan = document.getElementById(`bet-${index}`);
-    betSpan.textContent = '0';
+  betChip.forEach((amount, index) => {
+    pot += amount;
+    betChip[index] = 0; // 各プレイヤーのベット額をリセット
   });
-  updatePot();
+  renderPlayers();
+  updatePotDisplay();
 }
 
 // ポットから指定プレイヤーに全て分配
 function distributePot(playerIndex) {
   players[playerIndex] += pot;
-  pot = 0;
+  pot = 0; // ポットを空にする
   renderPlayers();
-  updatePot();
+  updatePotDisplay();
 }
