@@ -1,77 +1,63 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-  }
-  
-  h1, h3 {
-    margin: 10px 0;
-  }
-  
-  button {
+    background-color: #fafafa;
+}
+
+h1, h3 {
+    margin: 20px 0;
+    color: #333;
+}
+
+button {
     margin: 10px;
     padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  #player-selection-screen, #chip-management-screen {
-    margin-top: 20px;
-  }
-  
-  #pot-area {
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#player-selection-screen, #chip-management-screen {
+    margin-top: 40px;
+}
+
+#pot-area {
     padding: 20px;
-    width: 320px;
+    width: 300px;
     margin: 20px auto;
     background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  #players-container {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#players-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .player {
+    margin-top: 30px;
+}
+
+.player {
     padding: 20px;
-    width: 180px;
+    width: 200px;
     background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .player h4 {
-    margin-top: 0;
-  }
-  
-  .chip-stack img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chip-stack img {
     width: 40px;
-  }
-  
-  #pot-area button {
-    background-color: #FF5722;
-    margin-bottom: 20px; /* 少しスペースを空けてボタンが重ならないように */
-  }
-  
-  #pot-area button:hover {
-    background-color: #e64a19;
-  }
-  
+    margin: 5px;
+}

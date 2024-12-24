@@ -9,7 +9,7 @@
 <body>
   <!-- 画面1: プレイヤー人数選択 -->
   <div id="player-selection-screen">
-    <h1 id="app-title">Poker Chip Count v1.0</h1>
+    <h1 id="app-title">Poker Chip Count v1.1</h1>
     <h3>プレイヤー人数</h3>
     <div id="player-buttons">
       <!-- プレイヤー人数選択ボタン -->
@@ -24,16 +24,27 @@
     </div>
   </div>
 
-  <!-- 画面2: チップ管理画面 -->
-<div id="chip-management-screen" style="display: none;">
+   <!-- 画面2: チップ管理画面 -->
+   <div id="chip-management-screen" style="display: none;">
     <!-- ポットエリア -->
     <div id="pot-area">
-      <button onclick="distributePot(0)">ポットから分配</button> <!-- 上部に移動 -->
       <h2>ポットエリア</h2>
       <div>ポット: <span id="pot-value">0</span></div>
       <button onclick="collectBets()">ベットチップ回収</button>
     </div>
-  
+
+    <!-- ポットから分配ボタンを画面上部に移動 -->
+    <div id="distribute-pot-buttons">
+      <button onclick="distributePot(0)">プレイヤー1に分配</button>
+      <button onclick="distributePot(1)">プレイヤー2に分配</button>
+      <button onclick="distributePot(2)">プレイヤー3に分配</button>
+      <button onclick="distributePot(3)">プレイヤー4に分配</button>
+      <button onclick="distributePot(4)">プレイヤー5に分配</button>
+      <button onclick="distributePot(5)">プレイヤー6に分配</button>
+      <button onclick="distributePot(6)">プレイヤー7に分配</button>
+      <button onclick="distributePot(7)">プレイヤー8に分配</button>
+    </div>
+
     <!-- プレイヤーエリア -->
     <div id="players-container"></div>
   </div>
