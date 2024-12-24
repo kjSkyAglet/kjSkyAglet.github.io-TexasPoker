@@ -8,7 +8,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: auto; /* 横スクロールを有効にする */
+    overflow-y: hidden; /* 縦スクロールを無効にする */
 }
 
 h1, h3 {
@@ -44,7 +45,7 @@ button {
     gap: 20px;
     padding: 10px;
     flex-wrap: nowrap; /* 折り返さない */
-    overflow-x: auto; /* 横スクロールを追加 */
+    min-width: 100%; /* プレイヤーが画面の幅を越えても横スクロールできるように */
 }
 
 .player {
