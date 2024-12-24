@@ -11,10 +11,21 @@ body {
   }
   
   button {
-    margin: 5px;
-    padding: 10px 20px;
+    margin: 10px;
+    padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   }
   
   #player-selection-screen, #chip-management-screen {
@@ -22,29 +33,45 @@ body {
   }
   
   #pot-area {
-    border: 2px solid #000;
-    padding: 10px;
-    width: 300px;
+    padding: 20px;
+    width: 320px;
     margin: 20px auto;
     background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   #players-container {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
   }
   
   .player {
-    border: 2px solid #000;
-    padding: 10px;
-    width: 150px;
+    padding: 20px;
+    width: 180px;
     background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .player h4 {
+    margin-top: 0;
   }
   
   .chip-stack img {
-    position: absolute;
     width: 40px;
+  }
+  
+  #pot-area button {
+    background-color: #FF5722;
+    margin-bottom: 20px; /* 少しスペースを空けてボタンが重ならないように */
+  }
+  
+  #pot-area button:hover {
+    background-color: #e64a19;
   }
   
