@@ -8,8 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow-x: auto; /* 横スクロールを有効にする */
-    overflow-y: hidden; /* 縦スクロールを無効にする */
+    overflow: hidden; /* 画面全体でスクロールを無効化 */
 }
 
 h1, h3 {
@@ -61,7 +60,7 @@ button:disabled {
     flex-wrap: wrap;
     width: 100%;
     max-width: 800px;
-    overflow-x: auto;
+    overflow-x: hidden; /* 横スクロールを無効化 */
 }
 
 #players-container {
@@ -69,10 +68,8 @@ button:disabled {
     justify-content: center;
     gap: 20px;
     flex-wrap: nowrap;  /* プレイヤーエリアは横一列で表示 */
-    min-width: 100%;
-    max-width: 800px;  /* プレイヤーエリアが親要素を超えないように調整 */
-    overflow-x: auto;  /* 横スクロールを有効にする */
-    padding: 10px;
+    max-width: 100%;  /* 親要素の幅に合わせる */
+    box-sizing: border-box;
 }
 
 .player {
