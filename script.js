@@ -38,7 +38,7 @@ function renderPlayers() {
       <div class="chip-stack" id="chip-stack-${index}"></div>
       <button onclick="bet(${index}, 100)">+100</button>
       <button onclick="bet(${index}, -100)">-100</button>
-      <button onclick="distributePotToPlayer(${index})">ポットから分配</button>
+      <button onclick="distributePotToSinglePlayer(${index})">ポットから分配</button>
     `;
     container.appendChild(playerDiv);
   });
@@ -87,12 +87,14 @@ function updatePot() {
   document.getElementById('pot-value').textContent = pot;
 }
 
-// ポットからプレイヤーごとに分配
-function distributePotToPlayer(playerIndex) {
-  const share = Math.floor(pot / players.length);
-  players[playerIndex] += share;
-  renderPlayers();
-  resetPot();
+// ポットから指定プレイヤーに全て分配
+function distributePotToSinglePlayer(playerIndex) {
+  if (pot > 0) {
+    players[playerIndex] += pot;
+    pot = 0;
+    renderPlayers();
+    resetPot();
+  }
 }
 
 // ポットのリセット
