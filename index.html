@@ -9,7 +9,7 @@
 <body>
   <!-- 画面1: プレイヤー人数選択 -->
   <div id="player-selection-screen">
-    <h1 id="app-title">Poker Chip Count v1.6</h1>
+    <h1 id="app-title">Poker Chip Count v1.7</h1>
     <h3>プレイヤー人数</h3>
     <div id="player-buttons">
       <!-- プレイヤー人数選択ボタン -->
@@ -32,19 +32,17 @@
 
     <!-- ポットエリア -->
     <div id="pot-area">
-      <h2>ポットエリア</h2>
-      <div>
-        <span id="pot-value">0</span>
-        <img src="/img/chip100.png" alt="Chip" />
+        <h2>ポットエリア</h2>
+        <div>
+            <span id="pot-value">0</span>
+            <img src="img/chip100.png" alt="Chip" />
+        </div>
+        <button onclick="collectBets()">ベットチップ回収</button>
     </div>
-      <button onclick="collectBets()">ベットチップ回収</button>
-    </div>
-
-    
 
     <!-- プレイヤーエリア -->
     <div id="players-container"></div>
-  </div>
+</div>
 </body>
 
   <script src="script.js"></script>

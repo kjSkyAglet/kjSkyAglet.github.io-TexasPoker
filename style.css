@@ -67,12 +67,13 @@ button:disabled {
 #players-container {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
     padding: 10px;
     flex-wrap: nowrap;
     min-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden; /* 縦スクロール無効 */
 }
 
 .player {
@@ -86,6 +87,7 @@ button:disabled {
     box-sizing: border-box;
     width: 150px;
     height: 200px;
+    text-align: center;
 }
 
 .chip-stack {
@@ -94,10 +96,12 @@ button:disabled {
     height: 50px; /* チップスタックの高さ */
     background-color: #f0f0f0;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .chip-stack img {
-    position: absolute;
+    position: relative;
     width: 40px;
     height: 40px;
     animation: stackChips 0.5s ease-in-out; /* チップのアニメーション */
