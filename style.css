@@ -21,77 +21,10 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-}
-
-#player-selection-screen {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 800px;
-}
-#chip-management-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    max-height: 100vh; /* 画面全体の高さに収める */
-    overflow-y: auto; /* 縦スクロール可能に */
-}
-
-#pot-area {
-    border: 2px solid #000;
-    padding: 10px;
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-    background-color: #fff;
-}
-
-#players-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 10px;
-    flex-wrap: nowrap;
-    min-width: 100%;
-    
-}
-
-.player {
-    border: 2px solid #000;
-    padding: 10px;
-    background-color: #fff;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    width: 150px; /* プレイヤーエリアの幅を指定 */
-}
-
-.chip-stack img {
-    width: 40px;
-}
-
-#distribute-pot-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 800px; /* 最大幅を指定 */
-    overflow-x: auto; /* 横スクロール可能に */
-}
-
-button {
     background-color: #4CAF50;
     border: none;
     color: white;
     text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
@@ -105,6 +38,90 @@ button:disabled {
     cursor: not-allowed;
 }
 
-#distribute-pot-buttons button {
-    margin: 5px;
+#player-selection-screen, #chip-management-screen {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+#pot-area {
+    border: 2px solid #000;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+}
+
+#distribute-pot-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto;
+}
+
+#players-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+    flex-wrap: nowrap;
+    min-width: 100%;
+    overflow-x: auto;
+}
+
+.player {
+    border: 2px solid #000;
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 150px;
+    height: 200px;
+}
+
+.chip-stack {
+    position: relative;
+    width: 100%;
+    height: 50px; /* チップスタックの高さ */
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.chip-stack img {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    animation: stackChips 0.5s ease-in-out; /* チップのアニメーション */
+}
+
+@keyframes stackChips {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#pot-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#pot-area img {
+    width: 40px; /* チップ画像のサイズ */
+    height: 40px;
 }
