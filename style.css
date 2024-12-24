@@ -39,7 +39,8 @@ button {
 
 #players-container {
     display: flex;
-    justify-content: center; /* 横並びにする */
+    justify-content: flex-start; /* 横一列に並べる */
+    align-items: flex-start; /* 全て同じy座標に揃える */
     gap: 20px;
     padding: 10px;
     flex-wrap: nowrap; /* 折り返さない */
