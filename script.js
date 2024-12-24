@@ -21,12 +21,13 @@ function renderPlayers() {
     const playerDiv = document.createElement('div');
     playerDiv.className = 'player';
     playerDiv.innerHTML = `
-      <h4>プレイヤー ${index + 1}</h4>
+      
       <div>ベット額: <span id="bet-${index}">${betChip[index]}</span></div>
       <div class="chip-stack" id="chip-stack-${index}"></div>
-      <button onclick="bet(${index}, 100)">+100</button>
-      <button onclick="bet(${index}, -100)">-100</button>
+      <button onclick="bet(${index}, 100)">+</button>
+      <button onclick="bet(${index}, -100)">-</button>
       <div>所持チップ: <span id="chips-${index}">${chips}</span></div>
+      <h4>プレイヤー ${index + 1}</h4>
     `;
     container.appendChild(playerDiv);
   });
@@ -66,13 +67,18 @@ function updatePotDisplay() {
 
 // ベットチップをポットに回収
 function collectBets() {
-  betChip.forEach((amount, index) => {
-    pot += amount;
-    betChip[index] = 0; // 各プレイヤーのベット額をリセット
-  });
-  renderPlayers();
-  updatePotDisplay();
-}
+  
+    const allBetsEqual = betChip.every(bet => bet === betChip[0]);
+  
+    if (allBetsEqual) {
+      betChip.forEach((amount, index) => {
+        pot += amount;
+        betChip[index] = 0; // 各プレイヤーのベット額をリセット
+      });
+      renderPlayers();
+      updatePotDisplay();
+    }
+  }
 
 // ポットから指定プレイヤーに全て分配
 function distributePot(playerIndex) {
