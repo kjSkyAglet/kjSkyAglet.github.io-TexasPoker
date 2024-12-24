@@ -66,14 +66,13 @@ button:disabled {
 
 #players-container {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
     gap: 20px;
-    padding: 10px;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap;  /* プレイヤーエリアは横一列で表示 */
     min-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden; /* 縦スクロール無効 */
+    max-width: 800px;  /* プレイヤーエリアが親要素を超えないように調整 */
+    overflow-x: auto;  /* 横スクロールを有効にする */
+    padding: 10px;
 }
 
 .player {
@@ -88,6 +87,7 @@ button:disabled {
     width: 150px;
     height: 200px;
     text-align: center;
+    margin: 10px;  /* プレイヤー間に隙間を追加 */
 }
 
 .chip-stack {
