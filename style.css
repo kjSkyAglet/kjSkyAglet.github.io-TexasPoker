@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden; /* 画面全体でスクロールを無効化 */
+    overflow: hidden; /* スクロールバーを無効化 */
 }
 
 h1, h3 {
@@ -68,8 +68,9 @@ button:disabled {
     justify-content: center;
     gap: 20px;
     flex-wrap: nowrap;  /* プレイヤーエリアは横一列で表示 */
-    max-width: 100%;  /* 親要素の幅に合わせる */
+    width: 100%;  /* 親要素の幅に合わせる */
     box-sizing: border-box;
+    padding: 10px;
 }
 
 .player {
@@ -82,9 +83,10 @@ button:disabled {
     align-items: center;
     box-sizing: border-box;
     width: 150px;
-    height: 200px;
+    height: 250px; /* 高さを少し増やして要素を収める */
     text-align: center;
     margin: 10px;  /* プレイヤー間に隙間を追加 */
+    overflow: hidden; /* 要素が枠を超えないようにする */
 }
 
 .chip-stack {
